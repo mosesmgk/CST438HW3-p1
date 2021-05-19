@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>City Info</title>
+</head>
+<style>
+.center {
+  text-align: center;  
+}
+</style>
+<body style="border: 2px solid #666; padding: 10px; background-color: #ccc;">
+	<h2>City</h2>
+	<br/>
+	<table>
+		<tr>
+			<td>ID</td>
+			<td th:inline="text">[[${city.id}]]</td>
+		</tr>
+		<tr>
+			<td>Name</td>
+			<td th:inline="text">[[${city.name}]]</td>
+		</tr>
+		<tr>
+			<td>Country Code</td>
+			<td th:inline="text">[[${city.countryCode}]]</td>
+		</tr>
+		<tr>
+			<td>Country Name</td>
+			<td th:inline="text">[[${city.countryName}]]</td>
+		</tr>
+		<tr>
+			<td>District</td>
+			<td th:inline="text">[[${city.district}]]</td>
+		</tr>
+		<tr>
+			<td>Population</td>
+			<td th:inline="text">[[${city.population}]]</td>
+		</tr>
+		<tr>
+			<td>Local Weather</td>
+			<td th:inline="text">[[${city.temp}]] &#8457;</td>
+		</tr>
+		<tr>
+			<td>Local Time</td>
+			<td th:inline="text">[[${city.time}]]</td>
+		</tr>
+	</table>
+	
+	<h3>For a fabulous weekend get away for 2 to <span th:inline="text">[[${city.name}]]</span> sign up here.</h3>
+	<form action="#" th:action="@{/cities/reservation}" method="post">
+		Email: <input type="text" size="60" name="email" value=""> 
+		<br /><br />
+		<div class="form-group">
+			<div>
+                <input type="radio" id="option1" name="level" value="luxury"  >
+                <label for="option1">Luxury $1000</label>
+        	</div>
+        	<div>
+                <input type="radio" id="option2" name="level" value="moderate" >
+                <label for="option2">Very Good $500</label>
+        	</div>
+        	<div>
+                <input type="radio" id="option3" name="level" value="budget" checked="checked" >
+                <label for="option3">Good $350</label>
+        	</div>
+        </div>
+        <br />
+        <input type="hidden" id="city" name="city" th:value="${city.name}" />
+        
+		<input type="submit" value="Submit" />
+	</form>
+
+</body>
+</html>
